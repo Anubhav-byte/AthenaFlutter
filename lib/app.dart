@@ -1,7 +1,9 @@
 
 
 import 'package:athena/pages/splash_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 
 class AthenaApp extends StatelessWidget {
   @override
@@ -27,22 +29,40 @@ class AthenaApp extends StatelessWidget {
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(19.0),
+                borderRadius: BorderRadius.circular(11.0),
                 side: BorderSide(
                   width: 0.8,
                   color: Colors.teal[500]
                 )
               )
           ),
+          elevation: MaterialStateProperty.all(4.0),
+          shadowColor: MaterialStateProperty.all(Colors.blueGrey),
           backgroundColor:MaterialStateProperty.all(Colors.teal[300]),
           overlayColor: MaterialStateProperty.all(Colors.white60)
         )
       ),
+      textButtonTheme: TextButtonThemeData(
+        style:ButtonStyle(
+          shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(11.0),
+                  side: BorderSide(
+                      width: 0.8,
+                      color: Colors.teal[500]
+                  )
+              ),
+          ),
+          overlayColor: MaterialStateProperty.all(Colors.teal[100])
+        ),
+
+      ),
+
+
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-
     );
   }
 
