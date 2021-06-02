@@ -23,7 +23,11 @@ class AthenaApp extends StatelessWidget {
       brightness: Brightness.light,
       primaryColor: Colors.teal[300],
       backgroundColor: Colors.white,
-
+      textTheme: TextTheme(
+        headline5: TextStyle(
+          color: Colors.teal[300]
+        )
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
 
         style: ButtonStyle(
@@ -61,6 +65,9 @@ class AthenaApp extends StatelessWidget {
 
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.white,
+        iconTheme: IconThemeData(
+          color: Colors.teal[300]
+        ),
         elevation: 0,
       ),
     );

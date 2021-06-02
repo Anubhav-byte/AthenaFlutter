@@ -49,6 +49,7 @@ class _BottomNavigation extends State<BottomNavigation> {
         ),
       ),*/
       bottomNavigationBar: CurvedNavigationBar(
+
         color: Colors.teal[300],
         backgroundColor: Colors.transparent,
         buttonBackgroundColor: Colors.teal[300],

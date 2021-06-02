@@ -2,9 +2,11 @@ import 'dart:io';
 
 import 'package:athena/business_logic/textConvertor.dart';
 import 'package:athena/file_handler/chooseimage.dart';
+import 'package:athena/pages/textDisplay.dart';
 import 'package:athena/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_ml_vision/google_ml_vision.dart';
 
 class ImageToText extends StatefulWidget {
   @override
@@ -163,7 +165,18 @@ class _ImageToTextState extends State<ImageToText> {
       width: 185,
       child: ElevatedButton(
           onPressed: () async {
-            TextConverter().convertToText(_image);
+            var data;
+            VisionText visionText = await TextConverter().convertToText(_image);
+            if(visionText==null){
+              data = 'No text to display';
+            }
+            else{
+              data = visionText;
+            }
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TextDisplay(convertedText: data))
+            );
           },
           child: Text("Convert to Text")
       ),

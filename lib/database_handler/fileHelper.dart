@@ -54,5 +54,12 @@ class FileHelper{
     );
   }
 
+  Future<void> deleteFileData(String fileName) async {
+    final Database db = await getDatabase();
+    await db.delete(tableName,where: '$colFileName= ?',whereArgs: [fileName]);
+    //await db.rawDelete('DELETE FROM $tableName WHERE $colFileName = $fileName');
+
+  }
+
 
 }
