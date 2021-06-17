@@ -32,9 +32,10 @@ dependencies:
   path_provider:
   sqflite:
   google_ml_vision: ^0.0.5
-  firebase_core:
   open_file:
   toast: ^0.1.5
+  file_picker: ^3.0.2+2
+  flutter_tts:
 
 
 

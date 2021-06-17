@@ -63,20 +63,11 @@ class _HomePageState extends State<HomePage> {
           itemCount: listCount,
           itemBuilder: (BuildContext context,int index){
             return Padding(
-              padding: const EdgeInsets.only(left: 17.0,top:10,right: 13.0, bottom: 14),
+              padding: const EdgeInsets.only(left: 17.0,right: 13.0, bottom:0),
               child: Card(
-                color: Colors.teal[100],
                 elevation: 0,
 
-                child: ListTile(
-                  leading: listFiles[index].extensionName=='txt'?
-                  CircleAvatar(child: Icon(Icons.insert_drive_file_rounded,color: Colors.teal[300],), backgroundColor: Colors.grey[300],):
-                  CircleAvatar(child: Icon(Icons.music_note,color: Colors.teal[300],)),
-                  title: Text(listFiles[index].fileName+'.'+listFiles[index].extensionName,style: Theme.of(context).textTheme.headline5,),
-                  trailing: IconButton(icon: Icon(Icons.delete),onPressed: (){ deleteData(listFiles[index].fileName,listFiles[index].filePath);},),
-                  onTap: (){openFile(listFiles[index].filePath);},
-
-                ),
+                child:_getTile(index)
               ),
             );
           }
@@ -102,5 +93,26 @@ class _HomePageState extends State<HomePage> {
     await fileHelper.deleteFileData(fileName);
     getData();
 
+  }
+  
+  _getTile(int index){
+    return ListTile(
+      leading: listFiles[index].extensionName=='txt'?
+      CircleAvatar(
+        child: Icon(Icons.insert_drive_file_rounded,color: Colors.teal[300],),
+        backgroundColor: Colors.white,
+      ):
+      CircleAvatar(
+          child: Icon(Icons.music_note,color: Colors.teal[300],),
+          backgroundColor: Colors.grey[100],
+      ),
+      title: Text(
+        '${listFiles[index].fileName}.${listFiles[index].extensionName}',
+        style: Theme.of(context).textTheme.subtitle1,
+      ),
+      trailing: IconButton(icon: Icon(Icons.delete),onPressed: (){ deleteData(listFiles[index].fileName,listFiles[index].filePath);},),
+      onTap: (){openFile(listFiles[index].filePath);},
+
+    );
   }
 }

@@ -41,7 +41,7 @@ class _ImageToTextState extends State<ImageToText> {
         )
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        resizeToAvoidBottomInset: false,
         appBar: _appBar(),
         body: _imageTextBody(),
         //floatingActionButton:_getFloatingActionMenu() ,
@@ -160,26 +160,47 @@ class _ImageToTextState extends State<ImageToText> {
     );
   }
   _convertButton() {
-    return SizedBox(
-      height: 50,
-      width: 185,
-      child: ElevatedButton(
-          onPressed: () async {
-            var data;
-            VisionText visionText = await TextConverter().convertToText(_image);
-            if(visionText==null){
-              data = 'No text to display';
-            }
-            else{
-              data = visionText;
-            }
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TextDisplay(convertedText: data))
-            );
-          },
-          child: Text("Convert to Text")
-      ),
+    return ButtonBar(
+      children: [
+        SizedBox(
+          height: 45,
+          width: 90,
+          child: TextButton(
+            child: Text(
+              'Reset',style: TextStyle(
+                color: Colors.teal[300]
+            ),),
+            onPressed: (){
+              setState(() {
+                _image=null;
+              });
+            },
+          ),
+        ),
+        SizedBox(width: 5,),
+        SizedBox(
+          height: 50,
+          width: 150,
+
+          child: ElevatedButton(
+              onPressed: () async {
+                var data;
+                VisionText visionText = await TextConverter().convertToText(_image);
+                if(visionText==null){
+                  data = 'No text to display';
+                }
+                else{
+                  data = visionText;
+                }
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TextDisplay(convertedText: data))
+                );
+              },
+              child: Text("Convert to Text")
+          ),
+        ),
+      ],
     );
   }
 

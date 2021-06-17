@@ -18,6 +18,7 @@ class FileOperation{
       );
       fileHelper.insertFileData(fileDatabase);
   }
+
   Future<void> deltTxtFile(String filePath) async {
     File file = File(filePath);
     file.delete();

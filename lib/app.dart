@@ -26,6 +26,10 @@ class AthenaApp extends StatelessWidget {
       textTheme: TextTheme(
         headline5: TextStyle(
           color: Colors.teal[300]
+        ),
+        subtitle1: TextStyle(
+          color: Colors.teal[300],
+          fontSize: 20
         )
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -40,7 +44,7 @@ class AthenaApp extends StatelessWidget {
                 )
               )
           ),
-          elevation: MaterialStateProperty.all(4.0),
+          elevation: MaterialStateProperty.all(0.0),
           shadowColor: MaterialStateProperty.all(Colors.blueGrey),
           backgroundColor:MaterialStateProperty.all(Colors.teal[300]),
           overlayColor: MaterialStateProperty.all(Colors.white60)
@@ -70,6 +74,21 @@ class AthenaApp extends StatelessWidget {
         ),
         elevation: 0,
       ),
+
+      cardTheme: CardTheme(
+        color: Colors.grey[200],
+        shadowColor: Colors.black,
+        elevation: 6,
+        margin: EdgeInsets.only(top: 10.1,bottom: 6),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15)
+        )
+
+      ),
+
+
+
+
     );
   }
 
