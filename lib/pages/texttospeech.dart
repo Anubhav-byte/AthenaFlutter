@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:athena/business_logic/audioConverter.dart';
 import 'package:athena/file_handler/filePicker.dart';
+import 'package:athena/shared/fileSaveDialog.dart';
 import 'package:athena/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,12 +20,11 @@ class _TextToSpeechState extends State<TextToSpeech> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     fileTextController = TextEditingController();
-    fileTextController.text= "Hello world! How it's going buddy? Long time no see. Great to see you Anubhav. I hope you are doing fiine ";
+    //fileTextController.text= "Hello world! How it's going buddy? Long time no see. Great to see you Anubhav. I hope you are doing fiine ";
 
     return Container(
       color: Colors.transparent,
-      height: SizeConfig.screenHeight,
-      width: SizeConfig.screenWidth,
+      width: SizeConfig.blockSizeHorizontal*100,
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: Colors.white,
@@ -63,7 +63,7 @@ class _TextToSpeechState extends State<TextToSpeech> {
             _textField(),
             SizedBox(height: 10,),
             _mediaButtons(),
-            SizedBox(height: 25,),
+            SizedBox(height: 35,),
             _getAudioButton()
           ]
 
@@ -77,9 +77,8 @@ class _TextToSpeechState extends State<TextToSpeech> {
     if(file!=null){
       print(file.path);
       var data = await file.readAsString();
-      setState(() {
-        fileTextController.text = data;
-      });
+      print('$data');
+      fileTextController.text = data;
     }
     else{
       print('wrong');
@@ -128,7 +127,7 @@ class _TextToSpeechState extends State<TextToSpeech> {
       child: SingleChildScrollView(
 
         child: TextField(
-          textAlign: TextAlign.center,
+          textAlign: TextAlign.justify,
           controller: fileTextController,
           maxLines: 400,
           cursorColor: Colors.teal[300],
@@ -138,38 +137,49 @@ class _TextToSpeechState extends State<TextToSpeech> {
   }
 
   _mediaButtons() {
-    return ButtonBar(
-      alignment: MainAxisAlignment.center,
-      
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+
       children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 10),
-          child: IconButton(icon: Icon(CupertinoIcons.stop_circle, color: Colors.teal[300],size: 70,), onPressed: (){}),
-        ),
+        IconButton(
+            icon: Icon(CupertinoIcons.stop_circle, color: Colors.teal[300],size: 50,),
+            onPressed: (){
+              AudioConverter audioConverter = AudioConverter();
+              audioConverter.stop();
+            }
+            ),
         SizedBox(width: 20,),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 10,right:20),
-          child: IconButton(
-              icon: Icon(CupertinoIcons.play_circle,
-                color: Colors.teal[300],size: 70,),
-              onPressed: (){
-                AudioConverter audioConverter = AudioConverter();
-                audioConverter.play(fileTextController.text);
-              }),
-        ),
+        IconButton(
+            icon: Icon(CupertinoIcons.play_circle,
+              color: Colors.teal[300],
+            ),
+            onPressed: (){
+              AudioConverter audioConverter = AudioConverter();
+              audioConverter.play(fileTextController.text);
+            }),
 
       ],
     );
   }
 
   _getAudioButton() {
-  return Align(
-    alignment: Alignment.center,
+  return Padding(
+    padding: const EdgeInsets.only(left: 18),
     child: SizedBox(
       height: 50,
       width: 170,
       child: ElevatedButton.icon(
-          onPressed: (){},
+          onPressed: (){
+
+            showDialog(context: context,
+                builder: (context){
+                  return DialogBox().dialogBox(context,fileTextController.text,2);
+                }
+            );
+
+
+
+          },
           icon: Icon(Icons.download_sharp),
           label: Text("Export as Audio")
       ),

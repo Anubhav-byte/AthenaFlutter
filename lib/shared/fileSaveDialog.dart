@@ -6,7 +6,7 @@ import 'package:toast/toast.dart';
 
 class DialogBox{
   TextEditingController fileName = TextEditingController();
-  Widget dialogBox(BuildContext context,String data){
+  Widget dialogBox(BuildContext context,String data,int option){
 
 
     return Dialog(
@@ -74,8 +74,16 @@ class DialogBox{
                         print(fileName.text);
                         //_saveFile(data,fileName.text);
                         if(fileName.text != ''){
-                          FileOperation().saveTxtFile(data, fileName.text);
+
+                          if(option == 0){
+                            FileOperation().saveTxtFile(data, fileName.text);
+                          }
+                          else{
+                            FileOperation().saveAudioFile(data, fileName.text);
+                          }
+
                           Navigator.pop(context);
+
                         }else{
 
                           Toast.show("Enter a file name", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);

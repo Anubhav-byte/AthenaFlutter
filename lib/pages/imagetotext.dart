@@ -185,17 +185,21 @@ class _ImageToTextState extends State<ImageToText> {
           child: ElevatedButton(
               onPressed: () async {
                 var data;
-                VisionText visionText = await TextConverter().convertToText(_image);
-                if(visionText==null){
-                  data = 'No text to display';
+                if(_image != null) {
+                  VisionText visionText = await TextConverter().convertToText(
+                      _image);
+                  if (visionText == null) {
+                    data = 'No text to display';
+                  }
+                  else {
+                    data = visionText;
+                  }
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>
+                          TextDisplay(convertedText: data))
+                  );
                 }
-                else{
-                  data = visionText;
-                }
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TextDisplay(convertedText: data))
-                );
               },
               child: Text("Convert to Text")
           ),

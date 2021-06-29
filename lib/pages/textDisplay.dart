@@ -38,7 +38,7 @@ class _TextDisplayState extends State<TextDisplay> {
         IconButton(icon: Icon(Icons.save), onPressed: (){
           showDialog(context: context,
               builder: (context){
-                return DialogBox().dialogBox(context,data);
+                return DialogBox().dialogBox(context,data,0);
               }
           );
 
