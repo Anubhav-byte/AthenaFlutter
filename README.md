@@ -18,16 +18,16 @@ Sqlite
 Kotlin
 ### Dart Packages used:
     
-splash_screen_view: ^1.0.3
-curved_navigation_bar: ^0.3.7
-google_fonts: ^2.1.0
-image_picker: ^0.7.4
-path:
-path_provider:
-sqflite:
-google_ml_vision: ^0.0.5
-open_file:
-toast: ^0.1.5
-file_picker: ^3.0.2+2
-webview_flutter: ^2.0.9
+splash_screen_view: ^1.0.3 <br/>
+curved_navigation_bar: ^0.3.7 <br/>
+google_fonts: ^2.1.0 <br/>
+image_picker: ^0.7.4 <br/>
+path: <br/>
+path_provider: <br/>
+sqflite: <br/>
+google_ml_vision: ^0.0.5 <br/>
+open_file: <br/> 
+toast: ^0.1.5 <br/>
+file_picker: ^3.0.2+2 <br/>
+webview_flutter: ^2.0.9 <br/>
 
