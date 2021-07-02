@@ -1,4 +1,4 @@
-##Why Athena?
+## Why Athena?
 
 The title of my project is Athena, which is a tribute to the Greek goddess of wisdom.
 This name is used to celebrate the process of learning and sharing knowledge.
