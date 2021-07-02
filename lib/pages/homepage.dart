@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:athena/database_handler/fileDatabase.dart';
 import 'package:athena/database_handler/fileHelper.dart';
 import 'package:athena/file_handler/fileOperation.dart';
@@ -22,7 +24,19 @@ class _HomePageState extends State<HomePage> {
     return Container(
       height: SizeConfig.screenHeight,
       width: SizeConfig.screenWidth,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [
+
+                Colors.teal[100],
+                Colors.white
+              ],
+              begin: Alignment.topLeft,
+              end: FractionalOffset(0.4,1)
+          )
+      ),
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         appBar: _appBar(),
         body: _getHomeBody(),
       ),
@@ -31,6 +45,7 @@ class _HomePageState extends State<HomePage> {
 
   _appBar() {
     return AppBar(
+      backgroundColor: Colors.transparent,
       title: Padding(
         padding: const EdgeInsets.only(left: 8.0,top:25),
         child: Text(
@@ -56,18 +71,23 @@ class _HomePageState extends State<HomePage> {
 
   _getHomeBody() {
     return Container(
-      color: Colors.white,
+      color: Colors.transparent,
       width: SizeConfig.screenWidth,
       height: SizeConfig.screenHeight,
       child: ListView.builder(
           itemCount: listCount,
           itemBuilder: (BuildContext context,int index){
-            return Padding(
-              padding: const EdgeInsets.only(left: 17.0,right: 13.0, bottom:0),
-              child: Card(
-                elevation: 0,
+            return ClipRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 17.0,right: 13.0, bottom:0),
+                  child: Card(
+                    elevation: 0,
 
-                child:_getTile(index)
+                    child:_getTile(index)
+                  ),
+                ),
               ),
             );
           }

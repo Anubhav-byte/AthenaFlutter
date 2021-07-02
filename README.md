@@ -1,16 +1,10 @@
-# athena
+##Why Athena?
 
-My College Project
+The title of my project is Athena, which is a tribute to the Greek goddess of wisdom.
+This name is used to celebrate the process of learning and sharing knowledge.
+In this current era of technology and short attention span, learning has become quiet a difficult process.
+The traditional way of learning from books seems pretty far-fetch now. To tackle this particular problem,
+I cooked up an idea in my fantasy filled brain and tried to give it a shape.
+The result of that effort is my project, Athena.
+This application is build to promote self learning in a creative way and to make little children more interested in the world of learning.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

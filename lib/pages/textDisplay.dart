@@ -32,6 +32,7 @@ class _TextDisplayState extends State<TextDisplay> {
 
   _getAppBar() {
     return AppBar(
+      backgroundColor: Colors.white,
       title: Text("Converted Text",style:Theme.of(context).textTheme.headline5 ,),
       centerTitle: true,
       actions: [

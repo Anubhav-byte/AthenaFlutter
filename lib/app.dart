@@ -22,7 +22,7 @@ class AthenaApp extends StatelessWidget {
     return ThemeData(
       brightness: Brightness.light,
       primaryColor: Colors.teal[300],
-      backgroundColor: Colors.white,
+      //backgroundColor: Colors.white,
       textTheme: TextTheme(
         headline5: TextStyle(
           color: Colors.teal[300]
@@ -65,10 +65,10 @@ class AthenaApp extends StatelessWidget {
         ),
 
       ),
-
+      scaffoldBackgroundColor: Colors.transparent,
 
       appBarTheme: AppBarTheme(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         iconTheme: IconThemeData(
           color: Colors.teal[300]
         ),
@@ -76,7 +76,7 @@ class AthenaApp extends StatelessWidget {
       ),
 
       cardTheme: CardTheme(
-        color: Colors.grey[200],
+        color: Colors.grey.shade200.withOpacity(0.5),
         shadowColor: Colors.black,
         elevation: 6,
         margin: EdgeInsets.only(top: 10.1,bottom: 6),

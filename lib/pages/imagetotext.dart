@@ -31,14 +31,15 @@ class _ImageToTextState extends State<ImageToText> {
       height: SizeConfig.screenHeight,
       width: SizeConfig.screenWidth,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Colors.blueGrey[300],
-            Colors.white,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomLeft
-        )
+          gradient: LinearGradient(
+              colors: [
+
+                Colors.teal[100],
+                Colors.white
+              ],
+              begin: Alignment.topLeft,
+              end: FractionalOffset(0.1,0.3)
+          )
       ),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -74,7 +75,7 @@ class _ImageToTextState extends State<ImageToText> {
   //Body of Scaffold Widget
   _imageTextBody() {
     return Container(
-      color: Colors.white,
+      color: Colors.transparent,
       child: Padding(
         padding: const EdgeInsets.only(left: 27,right: 14.42),
         child: Column(

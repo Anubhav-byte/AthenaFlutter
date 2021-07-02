@@ -23,11 +23,20 @@ class _TextToSpeechState extends State<TextToSpeech> {
     //fileTextController.text= "Hello world! How it's going buddy? Long time no see. Great to see you Anubhav. I hope you are doing fiine ";
 
     return Container(
-      color: Colors.transparent,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [
+
+                Colors.teal[100],
+                Colors.white
+              ],
+              begin: Alignment.topLeft,
+              end: FractionalOffset(0.3,0.3)
+          )
+      ),
       width: SizeConfig.blockSizeHorizontal*100,
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        backgroundColor: Colors.white,
         appBar: _getAppBar(),
         body: _getBody(),
       ),
@@ -56,6 +65,7 @@ class _TextToSpeechState extends State<TextToSpeech> {
   _getBody() {
     return SingleChildScrollView(
       child: Container(
+        color: Colors.transparent,
         child: Column(
           children: [
             _pickFileButton(),
@@ -141,48 +151,58 @@ class _TextToSpeechState extends State<TextToSpeech> {
       mainAxisAlignment: MainAxisAlignment.center,
 
       children: [
-        IconButton(
-            icon: Icon(CupertinoIcons.stop_circle, color: Colors.teal[300],size: 50,),
-            onPressed: (){
+        GestureDetector(
+          child: Container(
+              child: Icon(CupertinoIcons.stop_circle, color: Colors.teal[300],size: 50,),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40)
+              ),
+             
+              ),
+            onTap: (){
               AudioConverter audioConverter = AudioConverter();
               audioConverter.stop();
             }
-            ),
+        ),
         SizedBox(width: 20,),
-        IconButton(
-            icon: Icon(CupertinoIcons.play_circle,
-              color: Colors.teal[300],
-            ),
-            onPressed: (){
+        GestureDetector(
+          child: Container(
+              child: Icon(CupertinoIcons.play_circle,
+                color: Colors.teal[300],
+                size: 50,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40)
+              ),
+          ),
+            onTap: (){
               AudioConverter audioConverter = AudioConverter();
               audioConverter.play(fileTextController.text);
-            }),
+            }
+        ),
 
       ],
     );
   }
 
   _getAudioButton() {
-  return Padding(
-    padding: const EdgeInsets.only(left: 18),
-    child: SizedBox(
-      height: 50,
-      width: 170,
-      child: ElevatedButton.icon(
-          onPressed: (){
+  return SizedBox(
+    height: 50,
+    width: 170,
+    child: ElevatedButton.icon(
+        onPressed: (){
 
-            showDialog(context: context,
-                builder: (context){
-                  return DialogBox().dialogBox(context,fileTextController.text,2);
-                }
-            );
+          showDialog(context: context,
+              builder: (context){
+                return DialogBox().dialogBox(context,fileTextController.text,2);
+              }
+          );
 
 
 
-          },
-          icon: Icon(Icons.download_sharp),
-          label: Text("Export as Audio")
-      ),
+        },
+        icon: Icon(Icons.download_sharp),
+        label: Text("Export as Audio")
     ),
   );
   }
