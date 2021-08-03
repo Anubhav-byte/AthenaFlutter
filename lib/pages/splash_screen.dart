@@ -7,8 +7,9 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body:
-           SplashScreenView(
+        SplashScreenView(
              imageSrc:'assets/athena_logo.webp',
              home: BottomNavigation(),
              duration: 3000,

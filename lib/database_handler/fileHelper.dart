@@ -51,7 +51,7 @@ class FileHelper{
     final Database db = await getDatabase();
     db.insert(tableName, fileDataBase.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace
-    );
+    ); 
   }
 
   Future<void> deleteFileData(String fileName) async {

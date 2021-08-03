@@ -30,7 +30,7 @@ class _AboutState extends State<About> {
   _appBar() {
     return AppBar(
       title: Text(
-          "Know The Developer",
+          "About",
           style: GoogleFonts.comfortaa(
             textStyle:  TextStyle(
                 color: Colors.teal[300],
@@ -46,7 +46,7 @@ class _AboutState extends State<About> {
 
   _webView() {
     return WebView(
-      initialUrl:'https://anubhav-byte.github.io/Anubhav-byte/' ,
+      initialUrl:'https://anubhav-byte.github.io/AthenaFlutter/' ,
       javascriptMode: JavascriptMode.unrestricted,
     );
   }

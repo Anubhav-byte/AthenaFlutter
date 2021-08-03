@@ -1,3 +1,4 @@
+import 'package:athena/business_logic/audioConverter.dart';
 import 'package:athena/shared/fileSaveDialog.dart';
 import 'package:athena/size_config.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class _TextDisplayState extends State<TextDisplay> {
   final convertedText;
   var data;
   var result;
+  AudioConverter audioConverter = AudioConverter();
 
   _TextDisplayState(this.convertedText);
   @override
@@ -33,17 +35,18 @@ class _TextDisplayState extends State<TextDisplay> {
   _getAppBar() {
     return AppBar(
       backgroundColor: Colors.white,
-      title: Text("Converted Text",style:Theme.of(context).textTheme.headline5 ,),
+      //title: Text("Converted Text",style:Theme.of(context).textTheme.headline5 ,),
       centerTitle: true,
       actions: [
+        playButton(),
+        stopButton(),
+        audioSaveButton(),
         IconButton(icon: Icon(Icons.save), onPressed: (){
           showDialog(context: context,
               builder: (context){
                 return DialogBox().dialogBox(context,data,0);
               }
           );
-
-
         })
       ],
     );
@@ -62,5 +65,35 @@ class _TextDisplayState extends State<TextDisplay> {
           )
       ),
     );
+  }
+
+  playButton() {
+    return IconButton(
+        icon: Icon(Icons.play_arrow_rounded),
+        onPressed: (){
+          audioConverter.play(data);
+        }
+        );
+  }
+
+  stopButton() {
+    return IconButton(
+        icon: Icon(Icons.stop),
+        onPressed: (){
+          audioConverter.stop();
+        }
+    );
+  }
+
+  audioSaveButton() {
+    return IconButton(
+        icon: Icon(Icons.audiotrack_sharp),
+        onPressed: (){
+          showDialog(context: context,
+              builder: (context){
+                return DialogBox().dialogBox(context,data,2);
+              }
+          );
+        });
   }
 }
